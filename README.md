@@ -1,3 +1,5 @@
+![](https://travis-ci.org/imuchnik/ansible-consumer-finance-services.svg?branch=master)
+
 Role Name
 =========
 
