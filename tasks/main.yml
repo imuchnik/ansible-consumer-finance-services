@@ -1,0 +1,19 @@
+---
+- name: Ensure Apache is running.
+  service:
+    name: "httpd24-httpd"
+    state: "started"
+    enabled: yes
+  register: http_service
+    
+- name: Ensure PDF reactor is running
+  service:
+    name: "pdfreactorwebservice"
+    state: "started"
+    enabled: yes
+  register: pdfreactor_service
+
+- name: Fail if we restarted services
+  fail:
+    msg: "We are failling this service because a service was restarted: httpd: {{ http_service.changed }} pdfreactor: {{ pdfreactor_service.changed }}"
+  when: http_service.changed or pdfreactor_service.changed
